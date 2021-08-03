@@ -12,7 +12,7 @@ function createOutput(initialValue, operator, finalValue) {
 function add() {
     const userNumber = getUserInput();
     const initialValue = currentResult;
-    currentResult = currentResult + userNumber;
+    currentResult += userNumber;
     createOutput(initialValue, '+', currentResult);
 }
 
