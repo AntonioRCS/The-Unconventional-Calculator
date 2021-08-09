@@ -9,6 +9,24 @@ function createOutput(initialValue, operator, finalValue) {
     outputResult(currentResult, `${initialValue} ${operator} ${finalValue}`);
 }
 
+function calculateResult(calculationType) {
+    const userNumber = getUserInput();
+    const initialValue = currentResult;
+    let mathOperator = calculationType.path[0].innerHTML;
+    console.log(calculationType.path[0].innerHTML)
+
+    if (mathOperator === '+') {
+        currentResult += userNumber;
+    } else if (mathOperator === '-') {
+        currentResult -= userNumber;
+    } else if (mathOperator === '*') {
+        currentResult *= userNumber;
+    } else {
+        currentResult /= userNumber;
+    }
+    createOutput(initialValue, mathOperator, currentResult);
+}
+
 function add() {
     const userNumber = getUserInput();
     const initialValue = currentResult;
@@ -42,9 +60,8 @@ function divide() {
     createOutput(initialValue, '/', currentResult);
 }
 
-
-addBtn.addEventListener('click', add);
-subtractBtn.addEventListener('click', subtract);
-multiplyBtn.addEventListener('click', multiply);
-divideBtn.addEventListener('click', divide);
+addBtn.addEventListener('click', calculateResult);
+subtractBtn.addEventListener('click', calculateResult);
+multiplyBtn.addEventListener('click', calculateResult);
+divideBtn.addEventListener('click', calculateResult);
 
